@@ -6,8 +6,8 @@ using UnityEngine;
 public class FOV : MonoBehaviour
 {
     [SerializeField] GameObject playerRef;
-    [SerializeField]LayerMask targetMask;
-    [SerializeField]LayerMask obstructionMask;
+    [SerializeField] LayerMask targetMask;
+    [SerializeField] LayerMask obstructionMask;
     [SerializeField] float radius;
     [SerializeField] float angle;
 
@@ -18,11 +18,9 @@ public class FOV : MonoBehaviour
         StartCoroutine(FieldOfView());
 
     }
-
-   
     private IEnumerator FieldOfView()
     {
-        //Debug.Log("Coroutine running!");
+
         WaitForSeconds wait = new WaitForSeconds(0.2f);
         while (true)
         {
@@ -30,7 +28,7 @@ public class FOV : MonoBehaviour
             CheckFOV();
         }
     }
-    
+
     private void CheckFOV()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
@@ -41,7 +39,7 @@ public class FOV : MonoBehaviour
             Vector3 directionToTarget = (target.position - transform.position).normalized;
             float angleToTarget = Vector3.Angle(transform.forward, directionToTarget);
             Debug.DrawLine(transform.position, directionToTarget);
-            //Debug.Log("Angle to player : "+angleToTarget);
+
             if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
@@ -66,7 +64,7 @@ public class FOV : MonoBehaviour
         else
         {
             isPlayerDetected = false;
-        } 
+        }
     }
 
 }
