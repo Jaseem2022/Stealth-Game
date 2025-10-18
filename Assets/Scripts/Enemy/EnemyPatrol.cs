@@ -4,7 +4,7 @@ public class EnemyPatrol : MonoBehaviour
 {
 
     public Transform[] patrolPoints;
-    int enemySpeed;
+    public int enemySpeed;
     int targetWayPoint;
     float reachThreshold;
     float rotationSpeed;
@@ -19,7 +19,11 @@ public class EnemyPatrol : MonoBehaviour
 
     void Update()
     {
-       
+        // //to remove sinking to ground
+        // Vector3 positionCorrection = transform.position;
+        // positionCorrection.y = 0.15f;
+        // transform.position = positionCorrection;
+
         transform.position = Vector3.MoveTowards(transform.position,
                                                 patrolPoints[targetWayPoint].position,
                                                 enemySpeed * Time.deltaTime

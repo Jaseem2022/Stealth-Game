@@ -11,7 +11,7 @@ public class FOV : MonoBehaviour
     [SerializeField] float radius;
     [SerializeField] float angle;
 
-    bool isPlayerDetected;
+    public bool isPlayerDetected;
 
     void Start()
     {
